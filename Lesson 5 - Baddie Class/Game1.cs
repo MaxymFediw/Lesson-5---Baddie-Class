@@ -1,13 +1,32 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Collections.Generic;
 
 namespace Lesson_5___Baddie_Class //Maxym F.
 {
+    enum Screen 
+    {
+        Title,
+        House,
+        End
+    }
+
+
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
+        List<Texture2D> ghostTextures;
+        Random generator;
+
+        Texture2D titleScreen;
+        Texture2D endScreen;
+        Texture2D backgroundScreen;
+
+        MouseState mouseState;
 
         public Game1()
         {
@@ -19,6 +38,9 @@ namespace Lesson_5___Baddie_Class //Maxym F.
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            Random generator = new Random();
+            ghostTextures = new List<Texture2D>();
 
             base.Initialize();
         }
@@ -36,6 +58,8 @@ namespace Lesson_5___Baddie_Class //Maxym F.
                 Exit();
 
             // TODO: Add your update logic here
+
+            
 
             base.Update(gameTime);
         }
