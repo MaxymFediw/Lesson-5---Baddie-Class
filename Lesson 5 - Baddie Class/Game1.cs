@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Lesson_5___Baddie_Class //Maxym
+namespace Lesson_5___Baddie_Class //Maxym F.
 {
     public class Game1 : Game
     {
