@@ -16,6 +16,10 @@ namespace Lesson_5___Baddie_Class //Maxym F.
 
     public class Game1 : Game
     {
+
+        Screen screen;
+        Rectangle window;
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
@@ -25,6 +29,8 @@ namespace Lesson_5___Baddie_Class //Maxym F.
         Texture2D titleScreen;
         Texture2D endScreen;
         Texture2D backgroundScreen;
+
+
 
         MouseState mouseState;
 
@@ -38,6 +44,8 @@ namespace Lesson_5___Baddie_Class //Maxym F.
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            window = new Rectangle(0, 0, 800, 600);
 
             Random generator = new Random();
             ghostTextures = new List<Texture2D>();
