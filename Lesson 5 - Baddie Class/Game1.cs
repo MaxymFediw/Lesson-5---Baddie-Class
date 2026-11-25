@@ -60,7 +60,7 @@ namespace Lesson_5___Baddie_Class //Maxym F.
 
             this.IsMouseVisible = false;
             for (int i = 0; i < 20; i++)
-                ghosts.Add(new Ghost(booTextures, new Rectangle(generator.Next(500), generator.Next(500), 40, 40)));
+                ghosts.Add(new Ghost(booTextures, new Rectangle(generator.Next(500), generator.Next(500), generator.Next(20, 67), generator.Next(20, 67))));
 
 
 
@@ -75,11 +75,11 @@ namespace Lesson_5___Baddie_Class //Maxym F.
             backgroundTexture = Content.Load<Texture2D>("Textures/haunted-background");
             endTexture = Content.Load<Texture2D>("Textures/haunted-end-screen");
             titleTexture = Content.Load<Texture2D>("Textures/haunted-title");
-            booTextures.Add(Content.Load<Texture2D>("Images/boo-stopped"));
-            marioTexture = Content.Load<Texture2D>("Images/mario");
+            booTextures.Add(Content.Load<Texture2D>("Textures/boo-stopped"));
+            marioTexture = Content.Load<Texture2D>("Textures/mario");
 
             for (int i = 1; i <= 8; i++)
-                booTextures.Add(Content.Load<Texture2D>("Images/boo-move-" + i));
+                booTextures.Add(Content.Load<Texture2D>("Textures/boo-move-" + i));
 
         }
 
@@ -123,18 +123,26 @@ namespace Lesson_5___Baddie_Class //Maxym F.
             
             _spriteBatch.Begin();
 
+
+
+
             if (screen == Screen.Title)
                 _spriteBatch.Draw(titleTexture, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White);
+            
             else if (screen == Screen.House)
             {
                 _spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White);
                 foreach (Ghost ghost in ghosts)
                     ghost.Draw(_spriteBatch);
             }
+            
             else
                 _spriteBatch.Draw(endTexture, new Rectangle(0, 0, _graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight), Color.White);
 
             _spriteBatch.Draw(marioTexture, marioRect, Color.White);
+
+
+
 
 
 
