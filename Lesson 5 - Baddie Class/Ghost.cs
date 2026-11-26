@@ -19,8 +19,9 @@ namespace Lesson_5___Baddie_Class
         private float _animationSpeed;
         private float _seconds;
         private float _opacity;
-
-        Random gen, gen2;
+        int _quickness;
+        
+        Random generator;
 
 
         public Ghost(List<Texture2D> textures, Rectangle location)
@@ -33,13 +34,14 @@ namespace Lesson_5___Baddie_Class
             _opacity = 1f;
             _animationSpeed = 0.2f;
             _seconds = 0;
+            generator = new Random();
+            _quickness = generator.Next(1, 4);
         }
 
         public void Update(GameTime gameTime, MouseState mouseState)
         {
 
-            gen = new Random();
-            gen2 = new Random();
+            
 
             // Calculates horizontal speed and direction sprite should face
             
@@ -47,22 +49,22 @@ namespace Lesson_5___Baddie_Class
             if (mouseState.X < _location.X)
             {
                 _direction = SpriteEffects.FlipHorizontally;
-                _speed.X = -1f;
+                _speed.X = -_quickness;
             }
            
             else if (mouseState.X > _location.X)
             {
                 _direction = SpriteEffects.None;
-                _speed.X = 1f;
+                _speed.X = _quickness;
             }
 
             // vertical speed
             
             if (mouseState.Y < _location.Y)
-                _speed.Y = (gen2.Next(-7, -1));
+                _speed.Y = -_quickness;
            
             else if (mouseState.Y > _location.Y)
-                _speed.Y = (gen.Next(1, 7));
+                _speed.Y = _quickness;
 
             // Only move if the mouse button is down
            
@@ -72,11 +74,13 @@ namespace Lesson_5___Baddie_Class
                 _textureIndex = 0;
                 _seconds = 0f;
                 _opacity = 0.3f;
+
+                _opacity += 0.00003f;
             }
             
             else if (_speed != Vector2.Zero) // Ghost is moving
             {
-                _opacity = 3f;
+                _opacity = 4f;
                 _seconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (_seconds > _animationSpeed)
                 {
