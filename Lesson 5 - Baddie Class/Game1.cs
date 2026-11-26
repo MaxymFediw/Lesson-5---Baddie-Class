@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
-namespace Lesson_5___Baddie_Class //Maxym F.
+namespace Lesson_5___Baddie_Class //Maxym 
 {
     enum Screen 
     {
